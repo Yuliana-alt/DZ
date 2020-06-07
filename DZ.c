@@ -22,8 +22,6 @@ student_t read_student() {
     student_t student; 
     int j = 0;
     char str[N];
-    char n_speciality[N];
-    // считываем поля
     printf("Введите номер зачетной книжки: ");
     scanf("%s", student.id); 
 
@@ -48,8 +46,7 @@ student_t read_student() {
     }
     str[j] = '\0';
     j++;
-    strncpy(n_speciality, str, j);
-    strncpy(student.speciality, n_speciality, j);
+    strncpy(student.speciality, str, j);
     j = 0;
     return student; 
 }
@@ -196,7 +193,13 @@ student_t* load_students(int* n) {
     fclose(f);
     return students;
 }
-void students_menu() {
+
+int main() {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Rus");
+
+ {
     int n;
     student_t* students = load_students(&n);
     int item; 
@@ -237,15 +240,6 @@ void students_menu() {
     free(students);
 }
 
-int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
-    setlocale(LC_ALL, "Rus");
-    char mode[N];
-
-    {
-        students_menu();
-    }
 
         return 0;
     }
